@@ -34,6 +34,20 @@ public class FlightsAppMenuContributor : IMenuContributor
             )
         );
 
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                "FlightsApp",
+                l["Menu:FlightsApp"],
+                icon: "fa fa-plane"
+            ).AddItem(
+                new ApplicationMenuItem(
+                    "FlightsApp.Airports",
+                    l["Menu:Airports"],
+                    url: "/Airports"
+                )
+            )
+        );
+
         if (MultiTenancyConsts.IsEnabled)
         {
             administration.SetSubItemOrder(TenantManagementMenuNames.GroupName, 1);
