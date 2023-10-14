@@ -43,7 +43,8 @@ public class FlightsAppMenuContributor : IMenuContributor
                 new ApplicationMenuItem(
                     "FlightsApp.Airports",
                     l["Menu:Airports"],
-                    url: "/Airports"
+                    url: "/Airports",
+                    icon: "fa fa-building"
                 )
             )
         );
