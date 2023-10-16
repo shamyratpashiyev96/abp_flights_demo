@@ -58,6 +58,20 @@ $(function () {
                                 action: function(data){
                                     editModal.open({id: data.record.id });
                                 }
+                            },
+                            {
+                                text: l('Delete'),
+                                confirmMessage: function(data){
+                                    return l('AirportDeletionConfirmationMessage', data.record.city, data.record.code);
+                                },
+                                action: function(data){
+                                    flightsApp.airports.airport
+                                    .delete(data.record.id)
+                                    .then(function () {
+                                        abp.notify.info(l('SuccessfullyDeleted',data.record.city, data.record.code));
+                                        dataTable.ajax.reload();
+                                    });
+                                }
                             }
                         ]
                     }

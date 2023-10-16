@@ -10,7 +10,8 @@
     "Code" : "Airport Code",
     "Airports" : "The List of Airports",
     "NewAirport" : "Add New Airport",
-    "Update" : "Edit"
-    
+    "Update" : "Edit",
+    "AirportDeletionConfirmationMessage" : "Are you sure you want to delete {0}({1})?",
+    "SuccessfullyDeleted" : "Successfully Deleted {0}({1})"
   }
 }
