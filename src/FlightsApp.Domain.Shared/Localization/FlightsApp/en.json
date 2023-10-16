@@ -8,7 +8,8 @@
     "Menu:Airports" : "Airports",
     "City" : "City Name",
     "Code" : "Airport Code",
-    "Airports" : "The List of Airports"
+    "Airports" : "The List of Airports",
+    "NewAirport" : "Add New Airport"
     
   }
 }
