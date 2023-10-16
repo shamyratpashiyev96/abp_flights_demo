@@ -1,0 +1,23 @@
+@page
+@using FlightsApp.Localization
+@using FlightsApp.Web.Pages.Airports
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model EditModal
+@inject IStringLocalizer<FlightsAppResource> L
+@{
+    Layout = null;
+    string update = "Update";
+
+}
+<abp-dynamic-form abp-model="airport" asp-page="/Airports/EditModal">
+    <abp-modal>
+        <abp-modal-header title="@L[update].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-input asp-for="Id" />
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+
+</abp-dynamic-form>

@@ -9,7 +9,8 @@
     "City" : "City Name",
     "Code" : "Airport Code",
     "Airports" : "The List of Airports",
-    "NewAirport" : "Add New Airport"
+    "NewAirport" : "Add New Airport",
+    "Update" : "Edit"
     
   }
 }

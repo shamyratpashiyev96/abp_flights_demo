@@ -2,6 +2,7 @@ $(function () {
     var l = abp.localization.getResource('FlightsApp');
 
     var createModal = new abp.ModalManager(abp.appPath + "Airports/CreateModal");
+    var editModal = new abp.ModalManager(abp.appPath + "Airports/EditModal");
 
     var dataTable = $('#AirportsTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
@@ -48,10 +49,27 @@ $(function () {
                 //             }).toLocaleString(luxon.DateTime.DATETIME_SHORT);
                 //     }
                 // }
+                {
+                    title: l('Actions'),
+                    rowAction: {
+                        items:[
+                            {
+                                text: l('Update'),
+                                action: function(data){
+                                    editModal.open({id: data.record.id });
+                                }
+                            }
+                        ]
+                    }
+                },
             ]
         })
     );
     createModal.onResult(function (){
+        dataTable.ajax.reload();
+    });
+
+    editModal.onResult(function (){
         dataTable.ajax.reload();
     });
 
