@@ -1,6 +1,8 @@
 $(function () {
     var l = abp.localization.getResource('FlightsApp');
 
+    var createModal = new abp.ModalManager(abp.appPath + "Airports/CreateModal");
+
     var dataTable = $('#AirportsTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
             serverSide: true,
@@ -49,4 +51,12 @@ $(function () {
             ]
         })
     );
+    createModal.onResult(function (){
+        dataTable.ajax.reload();
+    });
+
+    $('#NewAirportButton').click(function (e) {
+        e.preventDefault();
+        createModal.open();
+    });
 });
