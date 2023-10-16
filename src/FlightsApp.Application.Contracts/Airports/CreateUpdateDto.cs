@@ -1,6 +1,6 @@
 namespace FlightsApp.Airports
 {
-    public class CreateUpdateDto
+    public class CreateUpdateAirportDto
     {
         public string City { get; set; }
 

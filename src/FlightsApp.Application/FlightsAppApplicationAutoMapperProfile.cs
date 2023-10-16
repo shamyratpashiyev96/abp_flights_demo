@@ -12,6 +12,6 @@ public class FlightsAppApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
 
          CreateMap<Airport, AirportDto>();
-         CreateMap<CreateUpdateDto, Airport>();
+         CreateMap<CreateUpdateAirportDto, Airport>();
     }
 }

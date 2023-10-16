@@ -11,7 +11,7 @@ namespace FlightsApp.Airports
             AirportDto,
             Guid,
             PagedAndSortedResultRequestDto,
-            CreateUpdateDto>
+            CreateUpdateAirportDto>
     {
         public AirportAppService(IRepository<Airport, Guid> repo) : base(repo)
         {
