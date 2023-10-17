@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FlightsApp.Localization;
 using FlightsApp.MultiTenancy;
+using FlightsApp.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
@@ -18,7 +19,7 @@ public class FlightsAppMenuContributor : IMenuContributor
         }
     }
 
-    private Task ConfigureMainMenuAsync(MenuConfigurationContext context)
+    private async Task ConfigureMainMenuAsync(MenuConfigurationContext context)
     {
         var administration = context.Menu.GetAdministration();
         var l = context.GetLocalizer<FlightsAppResource>();
@@ -34,20 +35,25 @@ public class FlightsAppMenuContributor : IMenuContributor
             )
         );
 
-        context.Menu.AddItem(
-            new ApplicationMenuItem(
+        var FlightsMenu = new ApplicationMenuItem(
                 "FlightsApp",
                 l["Menu:FlightsApp"],
                 icon: "fa fa-plane"
-            ).AddItem(
+            );
+
+        if(await context.IsGrantedAsync(FlightsAppPermissions.Airports.Default))
+        {
+            FlightsMenu.AddItem(
                 new ApplicationMenuItem(
                     "FlightsApp.Airports",
                     l["Menu:Airports"],
                     url: "/Airports",
                     icon: "fa fa-building"
                 )
-            )
-        );
+            );
+        }
+
+        context.Menu.AddItem(FlightsMenu);
 
         if (MultiTenancyConsts.IsEnabled)
         {
@@ -61,6 +67,6 @@ public class FlightsAppMenuContributor : IMenuContributor
         administration.SetSubItemOrder(IdentityMenuNames.GroupName, 2);
         administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 3);
 
-        return Task.CompletedTask;
+        // return Task.CompletedTask;
     }
 }
