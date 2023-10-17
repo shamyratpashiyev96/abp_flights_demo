@@ -12,6 +12,10 @@
     "NewAirport" : "Add New Airport",
     "Update" : "Edit",
     "AirportDeletionConfirmationMessage" : "Are you sure you want to delete {0}({1})?",
-    "SuccessfullyDeleted" : "Successfully Deleted {0}({1})"
+    "SuccessfullyDeleted" : "Successfully Deleted {0}({1})",
+    "Permission:Airports" : "Airports Index Page",
+    "Permission:Create" : "Create",
+    "Permission:Update" : "Update",
+    "Permission:Delete" : "Delete"
   }
 }

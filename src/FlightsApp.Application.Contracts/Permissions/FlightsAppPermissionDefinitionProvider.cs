@@ -8,9 +8,13 @@ public class FlightsAppPermissionDefinitionProvider : PermissionDefinitionProvid
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var myGroup = context.AddGroup(FlightsAppPermissions.GroupName);
+        var FlightStoreGroup = context.AddGroup(FlightsAppPermissions.GroupName);
         //Define your own permissions here. Example:
         //myGroup.AddPermission(FlightsAppPermissions.MyPermission1, L("Permission:MyPermission1"));
+        var airportPermissons = FlightStoreGroup.AddPermission(FlightsAppPermissions.Airports.Default, L("Permission:Airports"));
+        airportPermissons.AddChild(FlightsAppPermissions.Airports.Create, L("Permission:Create"));
+        airportPermissons.AddChild(FlightsAppPermissions.Airports.Update, L("Permission:Update"));
+        airportPermissons.AddChild(FlightsAppPermissions.Airports.Delete,L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)

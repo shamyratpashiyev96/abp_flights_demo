@@ -37,6 +37,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using FlightsApp.Permissions;
 
 namespace FlightsApp.Web;
 
@@ -93,6 +95,16 @@ public class FlightsAppWebModule : AbpModule
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+
+        Configure<RazorPagesOptions>(options=>
+        {
+            /* Requires specified permissions for specified url routes,
+            if the requirement is not met, it returns redirect template page with "Access denied" message
+            and "Redirect to login page" button */
+            options.Conventions.AuthorizePage("/Airports/Index", FlightsAppPermissions.Airports.Default);
+            options.Conventions.AuthorizePage("/Airports/CreateModal", FlightsAppPermissions.Airports.Create);
+            options.Conventions.AuthorizePage("/Airports/EditModal", FlightsAppPermissions.Airports.Update);
+        });
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)

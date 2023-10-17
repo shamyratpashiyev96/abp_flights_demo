@@ -55,12 +55,14 @@ $(function () {
                         items:[
                             {
                                 text: l('Update'),
+                                visible: abp.auth.isGranted("FlightsApp.Airports.Update"),
                                 action: function(data){
                                     editModal.open({id: data.record.id });
                                 }
                             },
                             {
                                 text: l('Delete'),
+                                visible: abp.auth.isGranted("FlightsApp.Airports.Delete"),
                                 confirmMessage: function(data){
                                     return l('AirportDeletionConfirmationMessage', data.record.city, data.record.code);
                                 },
