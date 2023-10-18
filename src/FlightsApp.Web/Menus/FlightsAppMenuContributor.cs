@@ -53,7 +53,15 @@ public class FlightsAppMenuContributor : IMenuContributor
             );
         }
 
+        FlightsMenu.AddItem( new ApplicationMenuItem(
+            "FlightsApp.Passengers",
+            l["Menu:Passengers"],
+            url: "/Passengers",
+            icon: "fa fa-person"
+        ));
         context.Menu.AddItem(FlightsMenu);
+
+        
 
         if (MultiTenancyConsts.IsEnabled)
         {

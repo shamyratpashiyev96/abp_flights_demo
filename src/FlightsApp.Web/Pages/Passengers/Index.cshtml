@@ -1,0 +1,22 @@
+@page
+@using FlightsApp.Localization
+@using FlightsApp.Web.Pages
+@using Microsoft.Extensions.Localization
+@model IndexModel
+@inject IStringLocalizer<FlightsAppResource> L
+@section scripts
+{
+    <abp-script src="/Pages/Passengers/Index.js" />
+}
+@{
+    ViewData["Title"] = "Index";
+}
+
+<abp-card>
+    <abp-card-header>
+        <h2>@L["Passengers"]</h2>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="PassengersTable"></abp-table>
+    </abp-card-body>
+</abp-card>

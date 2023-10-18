@@ -16,6 +16,11 @@
     "Permission:Airports" : "Airports Index Page",
     "Permission:Create" : "Create",
     "Permission:Update" : "Update",
-    "Permission:Delete" : "Delete"
+    "Permission:Delete" : "Delete",
+    "Menu:Passengers" : "Passengers",
+    "Passengers" : "The List of Passengers",
+    "FirstName" : "Firstname",
+    "LastName" : "Lastname",
+    "PassengerDeletionConfirmationMessage" : "Are you sure you want to delete {0} {1}?"
   }
 }
