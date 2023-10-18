@@ -46,33 +46,6 @@ $(function () {
                 //             }).toLocaleString(luxon.DateTime.DATETIME_SHORT);
                 //     }
                 // }
-                {
-                    title: l('Actions'),
-                    rowAction: {
-                        items:[
-                            {
-                                text: l('Update'),
-                                action: function(data){
-                                    editModal.open({id: data.record.id });
-                                }
-                            },
-                            {
-                                text: l('Delete'),
-                                confirmMessage: function(data){
-                                    return l('PassengerDeletionConfirmationMessage', data.record.firstName, data.record.lastName);
-                                },
-                                action: function(data){
-                                    flightsApp.passengers.passenger
-                                    .delete(data.record.id)
-                                    .then(function () {
-                                        abp.notify.info(l('SuccessfullyDeleted',data.record.firstName, data.record.lastName));
-                                        dataTable.ajax.reload();
-                                    });
-                                }
-                            }
-                        ]
-                    }
-                },
             ]
         })
     );
