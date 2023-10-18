@@ -2,6 +2,7 @@ $(function () {
     var l = abp.localization.getResource('FlightsApp');
 
     var createModal = new abp.ModalManager(abp.appPath + "Passengers/CreateModal");
+    var editModal = new abp.ModalManager(abp.appPath + "Passengers/EditModal");
 
     var dataTable = $('#PassengersTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
@@ -22,6 +23,19 @@ $(function () {
                     // render: function (data) {
                     //     return l('Enum:BookType.' + data);
                     // }
+                },
+                {
+                    title: l('Actions'),
+                    rowAction: {
+                        items:[
+                            {
+                                text: l('Update'),
+                                action: function(data){
+                                    editModal.open({id: data.record.id });
+                                }
+                            }
+                        ]
+                    }
                 },
                 // {
                 //     title: l('PublishDate'),
@@ -48,11 +62,15 @@ $(function () {
                 //             }).toLocaleString(luxon.DateTime.DATETIME_SHORT);
                 //     }
                 // }
-            ]
+            ],
         })
     );
 
     createModal.onResult(function (){
+        dataTable.ajax.reload();
+    });
+
+    editModal.onResult(function (){
         dataTable.ajax.reload();
     });
 
