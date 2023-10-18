@@ -1,9 +1,6 @@
 $(function () {
     var l = abp.localization.getResource('FlightsApp');
 
-    var createModal = new abp.ModalManager(abp.appPath + "Passengers/CreateModal");
-    var editModal = new abp.ModalManager(abp.appPath + "Passengers/EditModal");
-
     var dataTable = $('#PassengersTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
             serverSide: true,
@@ -79,16 +76,4 @@ $(function () {
             ]
         })
     );
-    createModal.onResult(function (){
-        dataTable.ajax.reload();
-    });
-
-    editModal.onResult(function (){
-        dataTable.ajax.reload();
-    });
-
-    $('#NewPassengerButton').click(function (e) {
-        e.preventDefault();
-        createModal.open();
-    });
 });
