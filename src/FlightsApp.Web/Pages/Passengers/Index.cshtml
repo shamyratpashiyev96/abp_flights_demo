@@ -10,11 +10,23 @@
 }
 @{
     ViewData["Title"] = "Index";
+    string newPassenger = "NewPassenger";
 }
 
 <abp-card>
     <abp-card-header>
-        <h2>@L["Passengers"]</h2>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Passengers"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-right">
+                <abp-button id="NewPassengerButton"
+                text="@L[newPassenger].Value"
+                icon="plus"
+                button-type="Primary"
+                 />
+            </abp-column>
+        </abp-row>
     </abp-card-header>
     <abp-card-body>
         <abp-table striped-rows="true" id="PassengersTable"></abp-table>

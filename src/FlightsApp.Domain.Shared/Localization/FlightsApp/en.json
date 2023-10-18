@@ -21,6 +21,7 @@
     "Passengers" : "The List of Passengers",
     "FirstName" : "Firstname",
     "LastName" : "Lastname",
-    "PassengerDeletionConfirmationMessage" : "Are you sure you want to delete {0} {1}?"
+    "PassengerDeletionConfirmationMessage" : "Are you sure you want to delete {0} {1}?",
+    "NewPassenger" : "Add New Passenger"
   }
 }
