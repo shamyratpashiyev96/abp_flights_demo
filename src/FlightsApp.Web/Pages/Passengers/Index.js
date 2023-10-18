@@ -33,10 +33,25 @@ $(function () {
                                 action: function(data){
                                     editModal.open({id: data.record.id });
                                 }
+                            },
+                            {
+                                text: l('Delete'),
+                                confirmMessage: function(data){
+                                    return l('PassengerDeletionConfirmationMessage', data.record.firstName, data.record.lastName);
+                                },
+                                action: function(data){
+                                    flightsApp.passengers.passenger
+                                    .delete(data.record.id)
+                                    .then(function () {
+                                        abp.notify.info(l('PassengerSuccessfullyDeleted',data.record.firstName, data.record.lastName));
+                                        dataTable.ajax.reload();
+                                    });
+                                }
                             }
                         ]
                     }
                 },
+                
                 // {
                 //     title: l('PublishDate'),
                 //     data: "publishDate",

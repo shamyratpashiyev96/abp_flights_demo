@@ -22,6 +22,7 @@
     "FirstName" : "Firstname",
     "LastName" : "Lastname",
     "PassengerDeletionConfirmationMessage" : "Are you sure you want to delete {0} {1}?",
+    "PassengerSuccessfullyDeleted" : "Successfully Deleted {0} {1}",
     "NewPassenger" : "Add New Passenger"
   }
 }
