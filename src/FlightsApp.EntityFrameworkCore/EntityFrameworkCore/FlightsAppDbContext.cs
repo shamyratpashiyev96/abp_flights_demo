@@ -1,4 +1,5 @@
 ﻿using FlightsApp.Airports;
+using FlightsApp.Passengers;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -54,6 +55,8 @@ public class FlightsAppDbContext :
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
     public DbSet<Airport> Airports { get; set; }
 
+    public DbSet<Passenger> Passengers { get; set; }
+
     #endregion
 
     public FlightsAppDbContext(DbContextOptions<FlightsAppDbContext> options)
@@ -82,6 +85,12 @@ public class FlightsAppDbContext :
         builder.Entity<Airport>(b =>
         {
            b.ToTable(FlightsAppConsts.DbTablePrefix + "Airports", FlightsAppConsts.DbSchema);
+           b.ConfigureByConvention(); //auto configure for the base class props
+        });
+
+        builder.Entity<Passenger>(b =>
+        {
+           b.ToTable(FlightsAppConsts.DbTablePrefix + "Passengers", FlightsAppConsts.DbSchema);
            b.ConfigureByConvention(); //auto configure for the base class props
         });
     }
