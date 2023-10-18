@@ -104,6 +104,11 @@ public class FlightsAppWebModule : AbpModule
             options.Conventions.AuthorizePage("/Airports/Index", FlightsAppPermissions.Airports.Default);
             options.Conventions.AuthorizePage("/Airports/CreateModal", FlightsAppPermissions.Airports.Create);
             options.Conventions.AuthorizePage("/Airports/EditModal", FlightsAppPermissions.Airports.Update);
+
+            options.Conventions.AuthorizePage("/Passengers/Index", FlightsAppPermissions.Passengers.Default);
+            options.Conventions.AuthorizePage("/Passengers/CreateModal", FlightsAppPermissions.Passengers.Create);
+            options.Conventions.AuthorizePage("/Passengers/EditModal", FlightsAppPermissions.Passengers.Update);
+
         });
     }
 

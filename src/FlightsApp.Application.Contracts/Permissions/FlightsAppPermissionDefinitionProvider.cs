@@ -15,6 +15,11 @@ public class FlightsAppPermissionDefinitionProvider : PermissionDefinitionProvid
         airportPermissons.AddChild(FlightsAppPermissions.Airports.Create, L("Permission:Create"));
         airportPermissons.AddChild(FlightsAppPermissions.Airports.Update, L("Permission:Update"));
         airportPermissons.AddChild(FlightsAppPermissions.Airports.Delete,L("Permission:Delete"));
+
+        var passengerPermissions = FlightStoreGroup.AddPermission(FlightsAppPermissions.Passengers.Default, L("Permission:Passengers"));
+        passengerPermissions.AddChild(FlightsAppPermissions.Passengers.Create, L("Permission:Create"));
+        passengerPermissions.AddChild(FlightsAppPermissions.Passengers.Update, L("Permission:Update"));
+        passengerPermissions.AddChild(FlightsAppPermissions.Passengers.Delete, L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)

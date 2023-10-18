@@ -52,13 +52,17 @@ public class FlightsAppMenuContributor : IMenuContributor
                 )
             );
         }
-
-        FlightsMenu.AddItem( new ApplicationMenuItem(
-            "FlightsApp.Passengers",
-            l["Menu:Passengers"],
-            url: "/Passengers",
-            icon: "fa fa-user"
-        ));
+        
+        if(await context.IsGrantedAsync(FlightsAppPermissions.Passengers.Default))
+        {
+            FlightsMenu.AddItem( new ApplicationMenuItem(
+                "FlightsApp.Passengers",
+                l["Menu:Passengers"],
+                url: "/Passengers",
+                icon: "fa fa-user"
+            ));
+        }
+        
         context.Menu.AddItem(FlightsMenu);
 
         

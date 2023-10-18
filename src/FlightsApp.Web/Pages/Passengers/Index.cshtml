@@ -2,8 +2,11 @@
 @using FlightsApp.Localization
 @using FlightsApp.Web.Pages
 @using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Authorization
+@using FlightsApp.Permissions
 @model IndexModel
 @inject IStringLocalizer<FlightsAppResource> L
+@inject IAuthorizationService auth
 @section scripts
 {
     <abp-script src="/Pages/Passengers/Index.js" />
@@ -20,11 +23,15 @@
                 <abp-card-title>@L["Passengers"]</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-right">
-                <abp-button id="NewPassengerButton"
-                text="@L[newPassenger].Value"
-                icon="plus"
-                button-type="Primary"
-                 />
+                @if(await auth.IsGrantedAnyAsync(FlightsAppPermissions.Passengers.Create))
+                {
+                    <abp-button id="NewPassengerButton"
+                        text="@L[newPassenger].Value"
+                        icon="plus"
+                        button-type="Primary"
+                         />
+                }
+                
             </abp-column>
         </abp-row>
     </abp-card-header>

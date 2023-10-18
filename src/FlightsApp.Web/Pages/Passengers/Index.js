@@ -30,12 +30,14 @@ $(function () {
                         items:[
                             {
                                 text: l('Update'),
+                                visible: abp.auth.isGranted("FlightsApp.Passengers.Update"),
                                 action: function(data){
                                     editModal.open({id: data.record.id });
                                 }
                             },
                             {
                                 text: l('Delete'),
+                                visible: abp.auth.isGranted("FlightsApp.Passengers.Delete"),
                                 confirmMessage: function(data){
                                     return l('PassengerDeletionConfirmationMessage', data.record.firstName, data.record.lastName);
                                 },
