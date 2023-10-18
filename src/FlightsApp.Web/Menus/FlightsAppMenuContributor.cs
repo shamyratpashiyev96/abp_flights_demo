@@ -57,7 +57,7 @@ public class FlightsAppMenuContributor : IMenuContributor
             "FlightsApp.Passengers",
             l["Menu:Passengers"],
             url: "/Passengers",
-            icon: "fa fa-person"
+            icon: "fa fa-user"
         ));
         context.Menu.AddItem(FlightsMenu);
 
